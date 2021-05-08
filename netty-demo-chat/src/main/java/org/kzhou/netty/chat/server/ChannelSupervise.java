@@ -1,4 +1,4 @@
-package org.kzhou.netty.websocket;
+package org.kzhou.netty.chat.server;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
