@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * @author: Admin
  * @date: 2021年05月07日 10:59
  */
-public class ClientStart1 {
+public class ClientStart2 {
 
     public static void main(String[] args) {
         try {

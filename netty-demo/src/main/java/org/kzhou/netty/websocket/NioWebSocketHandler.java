@@ -39,6 +39,10 @@ public class NioWebSocketHandler extends SimpleChannelInboundHandler<Object> {
 
     private WebSocketServerHandshaker handShaker;
 
+    public NioWebSocketHandler(){
+        logger.info("NioWebSocketHandler 构造方法");
+    }
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
         logger.debug("收到消息："+msg);

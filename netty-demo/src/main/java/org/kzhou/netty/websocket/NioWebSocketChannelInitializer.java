@@ -6,6 +6,7 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import org.apache.log4j.Logger;
 
 /**
  * @Description: 管道初始化类
@@ -13,6 +14,12 @@ import io.netty.handler.stream.ChunkedWriteHandler;
  * @date: 2021年05月07日 10:19
  */
 public class NioWebSocketChannelInitializer extends ChannelInitializer<SocketChannel> {
+
+    private final Logger logger= Logger.getLogger(NioWebSocketChannelInitializer.class);
+
+    public NioWebSocketChannelInitializer(){
+        logger.info("NioWebSocketChannelInitializer 构造方法");
+    }
 
     protected void initChannel(SocketChannel ch) throws Exception {
         ch.pipeline().addLast("logging",new LoggingHandler("DEBUG"));//设置log监听器，并且日志级别为debug，方便观察运行流程
