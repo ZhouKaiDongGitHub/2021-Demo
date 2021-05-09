@@ -1,5 +1,6 @@
 package org.kzhou.netty.chat.server.processor;
 
+import com.alibaba.fastjson.JSONObject;
 import io.netty.channel.Channel;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import org.kzhou.netty.chat.protocol.IMDecoder;
@@ -58,8 +59,41 @@ public class MsgProcessor {
                 channel.writeAndFlush(new TextWebSocketFrame(content));
             }
 
-        }else if(msg.getCmd().equals(IMProtocol.LOGIN.getName())){
+        }else if(msg.getCmd().equals(IMProtocol.CHAT.getName())){
 
+        }else if(msg.getCmd().equals(IMProtocol.FLOWER.getName())){
+
+            JSONObject attrs = getAttrs(client);
+            long currentTime = sysTime();
+            if(null != attrs){
+                long lastTime = attrs.getLongValue("LastFlowerTime");
+                int seconds  = 10;
+                long subTime = currentTime - lastTime;
+                if(subTime < 1000 * seconds){
+                    msg.setSender("you");
+                    msg.setCmd(IMProtocol.SYSTEM.getName());
+                    msg.setContent("您送鲜花太频繁了，请"+ (seconds  - Math.round(subTime/1000))+"s后重试!");
+                    String content = imEncoder.encode(msg);
+                    client.writeAndFlush(new TextWebSocketFrame(content));
+                    return;
+                }
+            }
+
+            // 正常送花
+            for(Channel channel:ChannelSupervise.GlobalGroup){
+                if(channel == client){
+                    msg.setSender("you");
+                    msg.setContent("你送给大家一波鲜花雨");
+                    setAttrs(client,"LastFlowerTime",currentTime);
+                }else {
+                    msg.setSender(getNickName(client));
+                    msg.setContent(getNickName(client)+"送来了一波鲜花");
+                }
+                msg.setTime(sysTime());
+
+                String content = imEncoder.encode(msg);
+                client.writeAndFlush(new TextWebSocketFrame(content));
+            }
         }
     }
 
@@ -79,5 +113,20 @@ public class MsgProcessor {
      */
     private String getNickName(Channel channel){
       return  channel.attr(ChannelSupervise.NICK_NAME).get();
+    }
+
+    /**
+     * 从channel中获取鲜花属性
+     * @param channel
+     * @return
+     */
+    private JSONObject getAttrs(Channel channel){
+        return channel.attr(ChannelSupervise.ATTRS).get();
+    }
+
+    private void setAttrs(Channel channel,String lastFlowerTime,long time){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put(lastFlowerTime,time);
+        channel.attr(ChannelSupervise.ATTRS).getAndSet(jsonObject);
     }
 }
