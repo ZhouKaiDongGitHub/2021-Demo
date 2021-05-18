@@ -12,6 +12,7 @@
         <module>netty-demo</module>
         <module>netty-demo-chat</module>
         <module>distribution-component</module>
+        <module>micro-service</module>
     </modules>
 
 
