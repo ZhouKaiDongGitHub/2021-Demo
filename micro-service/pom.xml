@@ -13,22 +13,33 @@
     <packaging>pom</packaging>
     <modules>
         <module>order-service</module>
+        <module>nacos-service1</module>
     </modules>
 
     <properties>
-        <spring-cloud-alibaba-project-version>2.2.1.RELEASE</spring-cloud-alibaba-project-version>
+        <spring.boot-version>2.2.0.RELEASE</spring.boot-version>
+        <spring.cloud-version>Hoxton.SR3</spring.cloud-version>
+        <spring.cloud.alibaba-version>2.2.1.RELEASE</spring.cloud.alibaba-version>
     </properties>
+
     <dependencyManagement>
        <dependencies>
            <dependency>
                <groupId>org.springframework.boot</groupId>
                <artifactId>spring-boot-starter</artifactId>
-               <version>2.4.5</version>
+               <version>${spring.boot-version}</version>
+           </dependency>
+           <dependency>
+               <groupId>org.springframework.cloud</groupId>
+               <artifactId>spring-cloud-dependencies</artifactId>
+               <version>${spring.cloud-version}</version>
+               <type>pom</type>
+               <scope>import</scope>
            </dependency>
            <dependency>
                <groupId>com.alibaba.cloud</groupId>
                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-               <version>${spring-cloud-alibaba-project-version}</version>
+               <version>${spring.cloud.alibaba-version}</version>
                <type>pom</type>
                <scope>import</scope>
            </dependency>
