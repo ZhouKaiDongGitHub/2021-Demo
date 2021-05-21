@@ -1,22 +1,20 @@
-package org.kzhou.order;
+package org.kzhou.billing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.ApplicationContext;
 
 /**
- * @Description: order-service启动类
+ * @Description: BillingApplication 启动类
  * @author: Admin
- * @date: 2021年05月19日 10:41
+ * @date: 2021年05月21日 11:07
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class Application {
+public class BillingApplication {
+
 
     public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(Application.class,args);
+        SpringApplication.run(BillingApplication.class,args);
     }
-
-
 }

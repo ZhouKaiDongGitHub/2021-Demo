@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.102.125.29:8848
+        group: sz
+        file-extension: yml
+  profiles:
+    active: dev
