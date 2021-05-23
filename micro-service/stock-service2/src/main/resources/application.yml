@@ -1,0 +1,16 @@
+server:
+  port: 8062
+spring:
+  application:
+    name: stock-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.196.245.235:8848
+        group: sz
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

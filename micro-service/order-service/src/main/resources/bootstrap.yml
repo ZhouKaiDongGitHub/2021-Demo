@@ -1,11 +1,13 @@
 spring:
-  application:
-    name: order-service
   cloud:
     nacos:
       config:
-        server-addr: 47.102.125.29:8848
+        server-addr: 121.196.245.235:8848
         group: sz
         file-extension: yml
+        # shared-configs: common.yml
+  application:
+      name: order-service
   profiles:
     active: dev
+

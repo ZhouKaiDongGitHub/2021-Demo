@@ -14,7 +14,13 @@
     <packaging>pom</packaging>
     <modules>
         <module>order-service</module>
-        <module>billing-service</module>
+        <module>billing-service1</module>
+        <module>billing-service2</module>
+        <module>user-service</module>
+        <module>stock-service1</module>
+        <module>base-service</module>
+        <module>stock-service2</module>
+        <module>order-service2</module>
     </modules>
 
     <properties>

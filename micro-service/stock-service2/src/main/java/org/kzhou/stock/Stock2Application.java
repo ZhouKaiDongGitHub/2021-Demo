@@ -1,20 +1,14 @@
-package org.kzhou.order;
+package org.kzhou.stock;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-/**
- * @Description: order-service启动类
- * @author: Admin
- * @date: 2021年05月19日 10:41
- */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class OrderApplication {
+public class Stock2Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrderApplication.class,args);
+        SpringApplication.run(Stock2Application.class,args);
     }
-
 }

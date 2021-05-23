@@ -1,0 +1,30 @@
+server:
+  port: 8071
+spring:
+  application:
+    name: user-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.196.245.235:8848
+        group: sz
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+order-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+stock-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+billing-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+ribbon:
+  eager-load:
+    enabled: true
+    clients: order-service,stock-service,billing-service

@@ -1,10 +1,9 @@
-package org.kzhou.order.controller;
+package org.kzhou.user.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +15,7 @@ import java.util.List;
  * @date: 2021年05月19日 11:02
  */
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/user")
 public class MonitorController {
 
     @Autowired
@@ -29,7 +28,7 @@ public class MonitorController {
 
     @GetMapping(value = "/service")
     public List<ServiceInstance> getService() {
-        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("order-service");
+        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("user-service");
         return serviceInstances;
     }
 

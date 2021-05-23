@@ -1,0 +1,16 @@
+server:
+  port: 8092
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.196.245.235:8848
+        group: sz
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

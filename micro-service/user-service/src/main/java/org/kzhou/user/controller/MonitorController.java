@@ -1,4 +1,4 @@
-package org.kzhou.order.controller;
+package org.kzhou.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -16,7 +16,7 @@ import java.util.List;
  * @date: 2021年05月19日 11:02
  */
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/user")
 public class MonitorController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class MonitorController {
 
     @GetMapping(value = "/service")
     public List<ServiceInstance> getService() {
-        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("order-service");
+        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("user-service");
         return serviceInstances;
     }
 
