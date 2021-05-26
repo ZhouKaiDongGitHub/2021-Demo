@@ -24,7 +24,22 @@ stock-service:
 billing-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
-ribbon:
-  eager-load:
+
+logging:
+  level:
+    org:
+      kzhou:
+        user:
+          feign:
+            OrderServiceFeignApi: debug
+            StockServiceFeignApi: debug
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000 #连接超时
+        readTimeout: 5000 #处理超时
+  httpclient:
     enabled: true
-    clients: order-service,stock-service,billing-service
+    max-connections: 200
+    max-connections-per-route: 50

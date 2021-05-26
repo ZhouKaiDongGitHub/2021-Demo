@@ -10,7 +10,7 @@ public class WebConfig {
 
 
     @LoadBalanced
-    @Bean()
+    @Bean
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }

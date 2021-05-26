@@ -1,21 +1,20 @@
 package org.kzhou.order.controller;
 
+import org.kzhou.user.feign.OrderServiceFeignApi;
 import org.kzhou.base.response.ResponseModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/order")
-public class OrderController {
+public class OrderController implements OrderServiceFeignApi {
 
     private Logger logger = LoggerFactory.getLogger(OrderController.class);
 
@@ -55,6 +54,11 @@ public class OrderController {
     @GetMapping(value = "/createOrder")
     public ResponseModel createOrder() {
         logger.info("订单模块：下单成功1");
-       return new ResponseModel().setCode("200").setMessage("下单成功1");
+        try {
+            TimeUnit.MILLISECONDS.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new ResponseModel().setCode("200").setMessage("下单成功1");
     }
 }
