@@ -10,5 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>distribution-component</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>rabbitmq-demo</module>
+    </modules>
 
 </project>

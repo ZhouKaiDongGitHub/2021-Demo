@@ -8,6 +8,9 @@ spring:
       discovery:
         server-addr: 121.196.245.235:8848
         group: sz
+    sentinel:
+      transport:
+        dashboard: 121.196.245.235:8080
 
 management:
   endpoints:
@@ -43,3 +46,4 @@ feign:
     enabled: true
     max-connections: 200
     max-connections-per-route: 50
+
